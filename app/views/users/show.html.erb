@@ -1,3 +1,10 @@
 <h1> Name: <%= @user.name %></h1>
 <h2> Email: <%= @user.email %></h2>
+
+<% @user.posts.each do |post| %>
+ <%= post.title %>
+ <br>
+ <%= post.body %>
+<% end %>
+
 <%= link_to 'Index', users_path %>

@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
-	root 'application#hello'
+ 
+
+	resources :posts , only:[:index]
+
+	root 'sessions#new'
 	resources :users
+
+	resources :sessions , only:[:new , :create]
+
+get "log_out" => "sessions#destroy", :as => "sign_out"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
