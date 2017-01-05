@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts params
+    
     @user = User.new(:name => params[:user][:name], :email => params[:user][:email])
     if @user.save
       redirect_to users_path, :notice => "Your post was saved"
