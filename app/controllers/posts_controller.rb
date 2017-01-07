@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   	@posts = Post.all
   end
 
- 
+  
   def new
-@post = Post.new 
+    @post = Post.new 
   end 
 
   def create
@@ -18,5 +18,23 @@ class PostsController < ApplicationController
       render new, :notice => "there was an error creating the message"
     end 
 
+  end 
+
+  def edit
+
+    @post = Post.find(params[:id])
+
+  end 
+
+  def update
+    @post =  Post.find(params[:id])
+    @post.update(:title => params[:post][:title], :body => params[:post][:body])
+    redirect_to posts_path 
+  end 
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, :notice => "The post was deleted"
   end 
 end

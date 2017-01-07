@@ -1,12 +1,17 @@
 <h1>All Posts </h1>
 
-
+<%= link_to 'Create Post', new_post_url %>
 
 <% @posts.each do |post| %>	
 	<div class="post">
 		<div class="post-title">Post Title: <br><%= post.title %></div>
 		<div class="post-author">Author: <br><%= post.user.name %></div>
 		<div class="post-body"><%= post.body %> <br></div>
+		<div class="post-options">
+		 <%= link_to 'Edit', edit_post_path(post) %>
+		 <%= link_to 'Destroy', post_path(post),
+            data: {:confirm => 'Are you sure?'}, :method => :delete %>
+		 </div>
 	</div>
 <% end %>
 

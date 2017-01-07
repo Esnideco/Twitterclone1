@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
  
 
-	resources :posts , only:[:index , :new, :create]
+	resources :posts 
 
 	root 'sessions#new'
 	resources :users
