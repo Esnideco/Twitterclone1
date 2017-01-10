@@ -47,5 +47,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, :notice => "The post was deleted"
   end 
 
+def search
+
+  @posts = Post.where("body like ?", "%#{params[:search]}%")
+  @search = params[:search]
+end 
 
 end

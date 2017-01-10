@@ -17,6 +17,10 @@
   <% else %>
     <%= link_to "Log in", new_session_path %>
   <% end %> 
+  <form action="/posts/search"> <input type="text" name="search" placeholder="search a post">
+  <input type="submit" value="Search">
+
+  </form>
 </nav>
 
 <div id="content">
