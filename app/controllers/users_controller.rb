@@ -10,11 +10,11 @@ class UsersController < ApplicationController
 
   def create
     
-    @user = User.new(:name => params[:user][:name], :email => params[:user][:email])
+    @user = User.new(:name => params[:user][:name], :email => params[:user][:email], :password => params[:user][:password])
     if @user.save
       redirect_to users_path, :notice => "Your post was saved"
     else 
-      render new, :notice => "there was an error creating the message"
+      render "new", :notice => "there was an error creating the user"
     end 
 
   end 
