@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   	@posts = Post.all
   end
 
-  
+
   def new
     @post = Post.new 
   end 
@@ -23,18 +23,29 @@ class PostsController < ApplicationController
   def edit
 
     @post = Post.find(params[:id])
+    if current_user != @post.user 
+      redirect_to posts_path, :notice => "You are not logged in as the right user for this post "
+    end 
 
   end 
 
   def update
     @post =  Post.find(params[:id])
+    if current_user != @post.user 
+      redirect_to posts_path, :notice => "You are not logged in as the right user for this post "
+    end 
     @post.update(:title => params[:post][:title], :body => params[:post][:body])
     redirect_to posts_path 
   end 
 
   def destroy
     @post = Post.find(params[:id])
+    if current_user != @post.user 
+      redirect_to posts_path, :notice => "You are not logged in as the right user for this post "
+    end 
     @post.destroy
     redirect_to posts_path, :notice => "The post was deleted"
   end 
+
+
 end
