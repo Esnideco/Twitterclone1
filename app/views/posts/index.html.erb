@@ -7,6 +7,10 @@
 		<div class="post-title">Post Title: <br><%= post.title %></div>
 		<div class="post-author">Author: <br><%= post.user.name %></div>
 		<div class="post-body"><%= post.body %> <br></div>
+		<div class="post-file">
+			
+			<%= image_tag post.attachment if post.attachment %>
+		</div>
 		<div class="post-options">
 		<% if current_user == post.user %>
 		 <%= link_to 'Edit', edit_post_path(post) %>
