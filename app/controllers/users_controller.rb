@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_login, :only => [:create, :new]
+
   def index
   	@users = User.all
   end
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
     
     @user = User.new(:name => params[:user][:name], :email => params[:user][:email], :password => params[:user][:password])
     if @user.save
-      redirect_to users_path, :notice => "Your post was saved"
+      redirect_to new_session_path, :notice => "Your Account was created"
     else 
       render "new", :notice => "there was an error creating the user"
     end 
