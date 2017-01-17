@@ -2,6 +2,11 @@ class User < ApplicationRecord
 	attr_accessor :password
 
   has_many :posts
+  has_many :likes
+
+ 
+
+  has_many :liked_posts, :through => :likes, :source => :post
 
   before_save :encrypt_password
 

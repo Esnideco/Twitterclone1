@@ -16,3 +16,21 @@
 	width: 95%;
 	overflow-wrap: break-word;
 }
+
+.not-liked {
+
+	border-color: black;
+	border-style: dashed;
+	border-size: 2px;
+	width: 50px;
+	cursor: pointer;
+}
+
+.liked {
+
+	background-color: gray;
+	border-color: black;
+	border-style: dashed;
+	border-size: 2px;
+	width: 50px;
+}
