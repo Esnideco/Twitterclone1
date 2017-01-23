@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   end 
 
   def create
-
   	@post = Post.new(:title => params[:post][:title], :body => params[:post][:body], :user => current_user)
     @post.attachment = params[:post][:file]
     if @post.save

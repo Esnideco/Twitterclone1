@@ -1,29 +1,26 @@
 class LikesController < ApplicationController
 
   def index
+    puts "!!!!!!!!!!!!!!!!!!!"
+    puts "@@@@@@@ WE'RE IN THE INDEX @@@@@@@@"
     @likes = Like.all
-    respond_to do |format|
-      format.json { render :json => @likes, :include => :user }
-    end
+    render :json => @likes
+
   end
 
   def show
     @like = Like.find(params[:id])
-    respond_to do |format|
-      format.json { render :json => @like, :include => :user }
-    end
+    render :json => @like
   end
 
 	def create
-    puts params
-	  @like = Like.new(:user => current_user, :post_id => params[:like][:post])
 
-    respond_to do |format|
-      if @like.save
-        format.json { render json: @like, status: :created}
-      else
-        format.json { render json: @like.errors, status: :unprocessable_entity }
-      end
+	  @like = Like.new(:user => current_user, :post_id => params[:post_id])
+
+    if @like.save
+      render json: @like, status: :created
+    else
+      render json: @like.errors, status: :unprocessable_entity
     end
 	end
 end
