@@ -20,6 +20,9 @@
 		<% end %>
 		<p class=<%= "number-likes-" + post.id.to_s %>> <%= post.likes.count %> </p>
 		</div>
+		<br>
+
+		<div class="fb-share-button" data-href="https://twitter-clone-esnideco.herokuapp.com" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftwitter-clone-esnideco.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
 		<% if current_user == post.user %>
 		 <%= link_to 'Edit', edit_post_path(post) %>
 		 <%= link_to 'Destroy', post_path(post),
