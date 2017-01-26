@@ -14,7 +14,7 @@
 		<div class="post-options">
 		<div class="like-button">
 		<% if current_user.liked_posts.include?(post) %>
-			<p class="liked"> Like </p>
+			<p class="liked" data-post-id=<%= post.id %>> unlike </p>
 		<% else %>
 			<p class="not-liked" data-post-id=<%= post.id %> > Like </p>
 		<% end %>

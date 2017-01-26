@@ -23,4 +23,15 @@ class LikesController < ApplicationController
       render json: @like.errors, status: :unprocessable_entity
     end
 	end
+
+  def destroy
+
+   
+    @like = Like.where(:user => current_user, :post_id => params[:id])
+    
+    @like.first.destroy
+
+    render json: {:message => "deleted"}, status: 202
+
+  end 
 end
