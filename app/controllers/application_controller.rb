@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 		render html: "hello, world!"
 	end
 
+	def contact
+render "contact/contact"
+	end 
+
 
 	private
 

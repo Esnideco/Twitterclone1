@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	resources :posts do
 		get 'search', on: :collection
 	end
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
 	resources :sessions , only:[:new , :create]
 
 	get "log_out" => "sessions#destroy", :as => "sign_out"
+
+	get "contact" => "application#contact", :as => "contact"
 
 	resources :likes , only:[:create, :index, :show, :destroy]
 
